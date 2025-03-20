@@ -1,25 +1,31 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace TrabajoFinal
 {
     internal class Program
     {
-
-        public static void AgregarAlumnos()
-        {
-            List<string> Alumnos = new List<string>();
-            Alumnos.Add(Console.Read().ToString());
-
-            
-
-
-
-
-        }
-
-            
         
-        static void Main(string[] args)
+        public static void Salir(string Verificacion)
+        {
+            
+            Console.WriteLine("Deseas Salir del Programa Y/N ");
+            Verificacion = Console.ReadLine();
+            
+            if (Verificacion == "Y"  )
+            {
+                Console.WriteLine("Salido Exitosamente");
+                Environment.Exit(0);
+               
+            }if (Verificacion == "N")
+            { Console.WriteLine("Seleciones tu opcion");
+                selecionar();
+            }else 
+            { Console.WriteLine("Selecion la opcion correcta");
+                return;    
+            }
+        }
+         public static void selecionar()
         {
             Console.Write("===Sistema de Gestion Estudiantil===");
             Console.WriteLine("\n");
@@ -29,8 +35,9 @@ namespace TrabajoFinal
             Console.WriteLine("4. Calcular del promedio");
             Console.WriteLine("5. Salir del Programa\n");
             Console.WriteLine("Seleciones la opciones ");
+
             int Opciones = int.Parse(Console.ReadLine());
-            
+
             switch (Opciones)
             {
                 case 1:
@@ -46,14 +53,24 @@ namespace TrabajoFinal
                     Console.WriteLine("Calcular del promedio");
                     break;
                 case 5:
-                    Console.WriteLine("Salir del Programa");
+                    //Console.WriteLine("Salir del Programa");
+                    Salir(ref);
+                    string ret = Console.ReadLine();
+                    return;
+                    
+                    
                     break;
 
                 default:
                     Console.WriteLine("Seleciones la opcion correcto");
                     break;
             }
-
         }
-    }
+        
+        static void Main(string[] args)
+
+        {
+            selecionar();
+        }
+    }  
 }
