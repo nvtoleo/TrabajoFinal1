@@ -27,12 +27,15 @@ namespace TrabajoFinal
 
             Console.WriteLine("SElciones la opciones ");
             int Opciones = int.Parse(Console.ReadLine());
+            
             switch (Opciones)
             {
-                case ' 
-                    {
-
-                    }
+                case 1:
+                    Console.WriteLine("Agrege un nuevio estudiantes");
+                    break;
+                case 2:
+                    con
+                
 
 
 
