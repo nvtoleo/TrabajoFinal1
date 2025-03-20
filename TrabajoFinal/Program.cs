@@ -34,12 +34,21 @@ namespace TrabajoFinal
                     Console.WriteLine("Agrege un nuevio estudiantes");
                     break;
                 case 2:
-                    con
-                
-
-
+                    Console.WriteLine("Listado de los estudiantes");
+                    break;
+                case 3:
+                    Console.WriteLine("Buscar Estudiantes por Id");
+                    break;
+                case 4:
+                    Console.WriteLine("Calcular del promedio");
+                    break;
+                case 5:
+                    Console.WriteLine("Salir del Programa");
+                    break;
 
                 default:
+                    Console.WriteLine("Seleciones la opcion correcto");
+                    break;
             }
 
         }
