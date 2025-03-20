@@ -6,9 +6,9 @@ namespace TrabajoFinal
     internal class Program
     {
         
-        public static void Salir(string Verificacion)
+        public static void Salir()
         {
-            
+            string Verificacion
             Console.WriteLine("Deseas Salir del Programa Y/N ");
             Verificacion = Console.ReadLine();
             
@@ -54,9 +54,9 @@ namespace TrabajoFinal
                     break;
                 case 5:
                     //Console.WriteLine("Salir del Programa");
-                    Salir(ref);
-                    string ret = Console.ReadLine();
-                    return;
+                    Salir();
+                    string reg = Console.ReadLine();
+                   
                     
                     
                     break;
