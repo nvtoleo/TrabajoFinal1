@@ -21,11 +21,14 @@ namespace TrabajoFinal
         
         static void Main(string[] args)
         {
-            Console.WriteLine("===Sistema de Gestion Estudiantil===");
+            Console.Write("===Sistema de Gestion Estudiantil===");
             Console.WriteLine("\n");
             Console.WriteLine("1. Agregar un nuevo estudiante");
-
-            Console.WriteLine("SElciones la opciones ");
+            Console.WriteLine("2. Listado de los estudiantes");
+            Console.WriteLine("3. Buscar Estudiantes por Id");
+            Console.WriteLine("4. Calcular del promedio");
+            Console.WriteLine("5. Salir del Programa\n");
+            Console.WriteLine("Seleciones la opciones ");
             int Opciones = int.Parse(Console.ReadLine());
             
             switch (Opciones)
