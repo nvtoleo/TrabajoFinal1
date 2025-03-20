@@ -10,8 +10,13 @@ namespace TrabajoFinal
     {
         public int IdAlumnos { get; set; }
         public string Nombre { get; set; }
-        public int Edad { get;set;  }
-        public List  <float> Calificacion { get; set; }  
+        public int Edad { get; set; }
+        public List<double> Calificacion { get; set; }
+
+        public ALUMNO() 
+        {
+            Calificacion = new List<double>();
+        }
 
     }
 }
