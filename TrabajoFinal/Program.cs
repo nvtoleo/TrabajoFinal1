@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography.X509Certificates;
 
 namespace TrabajoFinal
@@ -12,6 +13,7 @@ namespace TrabajoFinal
         public static int Prom = 4;
         public static int Incremento = 1;
         public static int IndCre = 0;
+        public static bool valor = true;
         public static void AgregarL(int indicen)
         { //listado para agrega un estudiantes 
             Alumnos.Add(new ALUMNO());
@@ -76,21 +78,22 @@ namespace TrabajoFinal
 
         public static void AgregarAlumno()
         {   
-            Double Promedio;
-
-           // AgregarL(0);
+            //string indice = "Y";
             
-            //Console.WriteLine("Deseas agregar mas Estudiantes Y/N ? ");
-            string indice = "Y";
-            
-            while (indice == "Y")
+            while (valor = true)
             {
-                //int ind= IndCre+1 ;
                 AgregarL(IndCre++);
                 Console.WriteLine("Deseas agregar mas Estudiantes Y/N ? ");
-                indice = Console.ReadLine();
-                //ind++;
-            }
+                string indice = Console.ReadLine().ToUpper();
+                if (indice == "Y") 
+                { 
+                    valor = true; 
+                }
+                else
+                {
+                    valor = false;
+                }
+            } Console.Clear();
                 selecionar();
 
           } // listo en parte 
@@ -99,11 +102,14 @@ namespace TrabajoFinal
 
             foreach (var item in Alumnos)// Promedio 
             {
-                Promedio = item.Calificacion.Sum() / 4; // aqui se esta sumando los valores del listado y se esta dividiendo 
-                Console.WriteLine("*****************************************************************************************************************");
-                Console.WriteLine($"Estudiantes {item.Nombre}");
-                Console.WriteLine($"El estudiante con el ID: {item.IdAlumnos} \nEl nombre: {item.Nombre} \nla edad: {item.Edad} \nLas calificaciones son: {string.Join(",", item.Calificacion)} \nEl Promedio: {Promedio}");
+                
+                    Promedio = item.Calificacion.Sum() / 4; // aqui se esta sumando los valores del listado y se esta dividiendo 
+                    Console.WriteLine("*****************************************************************************************************************");
+                    Console.WriteLine($"Estudiantes {item.Nombre}");
+                    Console.WriteLine($"El estudiante con el ID: {item.IdAlumnos} \nEl nombre: {item.Nombre} \nla edad: {item.Edad} \nLas calificaciones son: {string.Join(",", item.Calificacion)} \nEl Promedio: {Promedio}");
+            
             }
+            Console.WriteLine("No Hay nada en la lista");
             Console.WriteLine("*****************************************************************************************************************");
             Console.ReadLine(); // para que pare el sistema y no entre de golpe 
             selecionar();
@@ -131,28 +137,42 @@ namespace TrabajoFinal
                     Console.WriteLine($"Estudiantes {item.Nombre}");
                     Console.WriteLine($"Tu promedio es:  {Promedio}");
                 }
+                Console.WriteLine("El Alumno no existe");
+                Console.ReadLine();
+                selecionar();
             }
         }
 
         public static void Salir()
-        {
-            string Verificacion;
-            Console.WriteLine("Deseas Salir del Programa Y/N ");
-            Verificacion = Console.ReadLine();
-            
-            if (Verificacion == "Y"  )
+        {       
+            while (valor == true)
             {
-                Console.WriteLine("Salido Exitosamente");
-                Environment.Exit(0);
-               
-            }if (Verificacion == "N")
-            { Console.WriteLine("Seleciones tu opcion");
-                selecionar();
-            }else 
-            { Console.WriteLine("Selecion la opcion correcta");
-                return;    
+                string Verificacion;
+                Console.WriteLine("Deseas Salir del Programa Y/N ");
+               // Verificacion = Console.ReadLine();
+                Verificacion = Console.ReadLine().ToUpper();
+
+                if (Verificacion == "Y")
+                {
+                    Console.WriteLine("Salido Exitosamente");
+                    Environment.Exit(0);
+
+                }
+                if (Verificacion == "N")
+                {
+                    Console.WriteLine("Seleciones tu opcion");
+                    //valor = false;
+                    Console.Clear();
+                    selecionar();
+                }
+                else
+                {
+                    Console.WriteLine("Selecion la opcion correcta");
+                     valor = true;
+
+                }
             }
-        }
+        } // listo 
 
         public static void BuscarEstudiantes()
 
@@ -171,6 +191,7 @@ namespace TrabajoFinal
                     Console.WriteLine($"El estudiante con el ID: {item.IdAlumnos} \nEl nombre: {item.Nombre} \nla edad: {item.Edad} \nLas calificaciones son: {string.Join(",", item.Calificacion)} \nEl Promedio: {Promedio}");
                 }
             }
+            Console.WriteLine("No hay ningun Alumno Resgistrado");
             Console.WriteLine("*****************************************************************************************************************");
             Console.ReadLine(); // para que pare el menu de inicio  y no entre de golpe 
             selecionar();
