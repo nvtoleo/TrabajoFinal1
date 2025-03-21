@@ -9,17 +9,22 @@ namespace TrabajoFinal
     {
         public static List<ALUMNO> Alumnos = new List<ALUMNO>();
         public static double Promedio;
+        public static int Prom = 4;
+        public static int Incremento = 1;
+        public static int IndCre = 0;
         public static void AgregarL(int indicen)
         { //listado para agrega un estudiantes 
             Alumnos.Add(new ALUMNO());
-            Console.WriteLine("Ingrese  el Id del estudiante");
-            Alumnos[indicen].IdAlumnos = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Ingrese  el Id del estudiante");
+            //Alumnos[indicen].IdAlumnos = Convert.ToInt32(Console.ReadLine());
+            Alumnos[indicen].IdAlumnos = Incremento++;
             Console.WriteLine("Ingrese  el Nombre del estudiante");
             Alumnos[indicen].Nombre = Console.ReadLine();
             Console.WriteLine("Ingrese la edad del estudiante");
             Alumnos[indicen].Edad = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Ingrese las calificaciones del estudiante");
-            for (int i = 1; i <= 1; i++) // Aqui van agregar las calificaciones 
+
+            for (int i = 1; i <= 4; i++) // Aqui van agregar las calificaciones 
             {
                 Console.WriteLine($"Introduzca la calificacion del las  #{i}");
                 Alumnos[indicen].Calificacion.Add(Convert.ToDouble(Console.ReadLine()));
@@ -57,6 +62,7 @@ namespace TrabajoFinal
                     break;
                 case 4:
                     Console.WriteLine("Calcular del promedio");
+                    PromedioAlumno();
                     break;
                 case 5:
                     //Console.WriteLine("Salir del Programa");
@@ -77,16 +83,18 @@ namespace TrabajoFinal
         {   
             Double Promedio;
 
-            AgregarL(0);
-            int ind =0; 
-            Console.WriteLine("Deseas agregar mas Estudiantes Y/N ? ");
-            string indice = Console.ReadLine();
+           // AgregarL(0);
+            
+            //Console.WriteLine("Deseas agregar mas Estudiantes Y/N ? ");
+            string indice = "Y";
+            
             while (indice == "Y")
             {
-                ind++;
-                AgregarL(ind);
+                //int ind= IndCre+1 ;
+                AgregarL(IndCre++);
                 Console.WriteLine("Deseas agregar mas Estudiantes Y/N ? ");
                 indice = Console.ReadLine();
+                //ind++;
             }
             
                 selecionar();
@@ -97,7 +105,7 @@ namespace TrabajoFinal
 
             foreach (var item in Alumnos)// Promedio 
             {
-                Promedio = item.Calificacion.Sum() / 5; // aqui se esta sumando los valores del listado y se esta dividiendo 
+                Promedio = item.Calificacion.Sum() / 4; // aqui se esta sumando los valores del listado y se esta dividiendo 
                 Console.WriteLine("*****************************************************************************************************************");
                 Console.WriteLine($"Estudiantes {item.Nombre}");
                 Console.WriteLine($"El estudiante con el ID: {item.IdAlumnos} \nEl nombre: {item.Nombre} \nla edad: {item.Edad} \nLas calificaciones son: {string.Join(",", item.Calificacion)} \nEl Promedio: {Promedio}");
@@ -113,6 +121,24 @@ namespace TrabajoFinal
             int IdEliminar = int.Parse(Console.ReadLine());
             Alumnos.RemoveAt(Id)
         }   */
+
+        public static void PromedioAlumno()
+        {
+            Console.WriteLine("SELECIONES EL ID DEL ESTUDIANTES BUSCADO");
+            int IdBuscado = int.Parse(Console.ReadLine());
+
+            foreach (var item in Alumnos)
+
+            {
+                if (item.IdAlumnos == IdBuscado)
+                {
+                    Promedio = item.Calificacion.Sum() / Prom; // aqui se esta sumando los valores del listado y se esta dividiendo 
+                    Console.WriteLine("*****************************************************************************************************************");
+                    Console.WriteLine($"Estudiantes {item.Nombre}");
+                    Console.WriteLine($"Tu promedio es:  {Promedio}");
+                }
+            }
+        }
 
         public static void Salir()
         {
@@ -142,17 +168,17 @@ namespace TrabajoFinal
              
             foreach (var item in Alumnos)
                 
-            {
+            { 
                 if (item.IdAlumnos == IdBuscado)
                 {
-                    Promedio = item.Calificacion.Sum() / 5; // aqui se esta sumando los valores del listado y se esta dividiendo 
+                    Promedio = item.Calificacion.Sum() / Prom; // aqui se esta sumando los valores del listado y se esta dividiendo 
                     Console.WriteLine("*****************************************************************************************************************");
                     Console.WriteLine($"Estudiantes {item.Nombre}");
                     Console.WriteLine($"El estudiante con el ID: {item.IdAlumnos} \nEl nombre: {item.Nombre} \nla edad: {item.Edad} \nLas calificaciones son: {string.Join(",", item.Calificacion)} \nEl Promedio: {Promedio}");
                 }
             }
             Console.WriteLine("*****************************************************************************************************************");
-            Console.ReadLine(); // para que pare el sistema y no entre de golpe 
+            Console.ReadLine(); // para que pare el menu de inicio  y no entre de golpe 
             selecionar();
         }
 
