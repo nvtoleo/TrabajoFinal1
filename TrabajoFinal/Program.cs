@@ -50,7 +50,6 @@ namespace TrabajoFinal
                     Console.WriteLine("==Agregar un nuevo estudiante==\n");
                     Console.WriteLine("*****************************************************************************************************************");
                     AgregarAlumno();
-                    
                     break;
                 case 2:
                     Console.WriteLine("Listado de los estudiantes");
@@ -67,10 +66,6 @@ namespace TrabajoFinal
                 case 5:
                     //Console.WriteLine("Salir del Programa");
                     Salir();
-
-
-
-
                     break;
 
                 default:
@@ -96,7 +91,6 @@ namespace TrabajoFinal
                 indice = Console.ReadLine();
                 //ind++;
             }
-            
                 selecionar();
 
           } // listo en parte 
@@ -182,12 +176,6 @@ namespace TrabajoFinal
             selecionar();
         }
 
-       
-
-     
-
-
-       
         static void Main(string[] args)
         {
             selecionar();
